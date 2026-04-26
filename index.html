@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Earthly Blooms - Handcrafted natural soaps made with love. Small-batch, handcrafted soaps with earth-inspired ingredients. Order via email." />
+  <title>Earthly Blooms | Handcrafted Natural Soaps</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================
+       NAVBAR
+       Contains logo, navigation links, and cart icon
+       ============================================ -->
+  <header class="navbar" role="banner">
+    <a href="#hero" class="nav-logo-link" aria-label="Earthly Blooms - Home">
+      <img src="images/green-logo.JPG" alt="Earthly Blooms - Handcrafted Natural Soaps" class="nav-logo" />
+    </a>
+
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#order">Order</a>
+    </nav>
+
+    <!-- Cart icon with count badge -->
+    <button class="cart-icon" id="cartIcon" aria-label="Shopping cart">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+      <span class="cart-count" id="cartCount" aria-live="polite">0</span>
+    </button>
+  </header>
+
+  <!-- ============================================
+       HERO SECTION
+       Main landing area with floating leaves animation
+       ============================================ -->
+  <section class="hero" id="hero" aria-labelledby="hero-heading">
+    <!-- Floating leaves container (animated via JS) -->
+    <div class="floating-leaves" id="floatingLeaves" aria-hidden="true"></div>
+
+    <div class="hero-card">
+      <img src="images/orange-logo.JPG" alt="Earthly Blooms - Handcrafted Natural Soaps Logo" class="hero-logo" />
+
+      <p class="eyebrow">Small Batch • Natural • Handcrafted</p>
+      <h1 id="hero-heading">Natural. Simple. Beautiful.</h1>
+      <p class="hero-text">
+        Handcrafted natural soaps made with love from earth-inspired ingredients.
+        Each bar is a small work of art, crafted for your daily ritual.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#shop" class="btn primary">Shop Soaps</a>
+        <a href="#order" class="btn secondary">Request an Order</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PRODUCT CAROUSEL SECTION
+       Featured soaps with sliding carousel
+       ============================================ -->
+  <section id="shop" class="section shop-section" aria-labelledby="shop-heading">
+    <p class="eyebrow">Our Collection</p>
+    <h2 id="shop-heading">Featured Soaps</h2>
+    <p class="section-text">
+      Each soap is handcrafted in small batches with natural ingredients.
+    </p>
+
+    <!-- Carousel container -->
+    <div class="carousel-container">
+      <!-- Left arrow button -->
+      <button class="carousel-arrow carousel-arrow-left" id="prevBtn" aria-label="Show previous products">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Product cards wrapper -->
+      <div class="carousel-track" id="carouselTrack">
+        <article class="product-card">
+          <div class="product-image" style="background: linear-gradient(135deg, #9aaa8d 0%, #7a8a6d 100%);" role="img" aria-label="Lavender and Sage soap product image">
+            <span class="placeholder-text">Lavender &amp; Sage</span>
+          </div>
+          <h3>Lavender &amp; Sage Soap</h3>
+          <p>Calming lavender with grounding sage essential oils.</p>
+          <span class="price">$12.00</span>
+          <button class="btn add-to-cart-btn" data-product="Lavender &amp; Sage Soap" aria-label="Add Lavender and Sage Soap to cart">Add to Cart</button>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image" style="background: linear-gradient(135deg, #c98254 0%, #a66b3f 100%);" role="img" aria-label="Honey and Oat soap product image">
+            <span class="placeholder-text">Honey &amp; Oat</span>
+          </div>
+          <h3>Honey &amp; Oat Bar</h3>
+          <p>Raw honey and colloidal oatmeal for gentle cleansing.</p>
+          <span class="price">$12.00</span>
+          <button class="btn add-to-cart-btn" data-product="Honey &amp; Oat Bar" aria-label="Add Honey and Oat Bar to cart">Add to Cart</button>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image" style="background: linear-gradient(135deg, #8b9a7d 0%, #6b7a5d 100%);" role="img" aria-label="Eucalyptus Refresh soap product image">
+            <span class="placeholder-text">Eucalyptus</span>
+          </div>
+          <h3>Eucalyptus Refresh</h3>
+          <p>Refreshing eucalyptus with a hint of peppermint.</p>
+          <span class="price">$12.00</span>
+          <button class="btn add-to-cart-btn" data-product="Eucalyptus Refresh" aria-label="Add Eucalyptus Refresh to cart">Add to Cart</button>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image" style="background: linear-gradient(135deg, #b8956e 0%, #9a7a54 100%);" role="img" aria-label="Citrus Bliss soap product image">
+            <span class="placeholder-text">Citrus Blend</span>
+          </div>
+          <h3>Citrus Bliss Bar</h3>
+          <p>Bright citrus blend with orange and lemon oils.</p>
+          <span class="price">$12.00</span>
+          <button class="btn add-to-cart-btn" data-product="Citrus Bliss Bar" aria-label="Add Citrus Bliss Bar to cart">Add to Cart</button>
+        </article>
+      </div>
+
+      <!-- Right arrow button -->
+      <button class="carousel-arrow carousel-arrow-right" id="nextBtn" aria-label="Show next products">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Carousel indicators -->
+    <div class="carousel-indicators" id="carouselIndicators" role="tablist" aria-label="Carousel navigation">
+      <button class="indicator active" data-index="0" role="tab" aria-label="Go to slide 1" aria-selected="true"></button>
+      <button class="indicator" data-index="1" role="tab" aria-label="Go to slide 2" aria-selected="false"></button>
+    </div>
+
+    <!-- Demo notice -->
+    <p class="demo-notice">
+      <strong>Demo Mode:</strong> Online checkout coming soon. For now, please <a href="mailto:hello@earthlyblooms.com?subject=Soap Order Inquiry">email to place an order</a>.
+    </p>
+  </section>
+
+  <!-- ============================================
+       ABOUT SECTION
+       Brand story with parallax background
+       ============================================ -->
+  <section id="about" class="about" data-parallax="0.3" aria-labelledby="about-heading">
+    <div class="about-content">
+      <p class="eyebrow">About Earthly Blooms</p>
+      <h2 id="about-heading">Handcrafted with Love</h2>
+      <p>
+        Born from a love of natural living, Earthly Blooms creates small-batch
+        handcrafted soaps using time-honored methods. Each bar is made with
+        care in our home studio, using simple, wholesome ingredients that
+        nourish your skin and delight your senses.
+      </p>
+      <p class="about-second">
+        We believe in the power of simple, natural ingredients—
+        no harsh chemicals, no artificial fragrances, just pure,
+        gentle soap made the way nature intended.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       ORDER SECTION
+       Call to action for order inquiries
+       ============================================ -->
+  <section id="order" class="section order" aria-labelledby="order-heading">
+    <p class="eyebrow">Order Inquiry</p>
+    <h2 id="order-heading">Ready to Order?</h2>
+    <p class="section-text">
+      Interested in our handcrafted soaps? Send us a message and we'll
+      help you find the perfect soap for your needs.
+    </p>
+
+    <!-- Mailto button with pre-filled subject -->
+    <a
+      href="mailto:hello@earthlyblooms.com?subject=Soap Order Inquiry"
+      class="btn primary"
+    >
+      Email to Order
+    </a>
+  </section>
+
+  <!-- ============================================
+       CART NOTIFICATION
+       Toast message for add-to-cart feedback
+       ============================================ -->
+  <div class="cart-toast" id="cartToast" role="status" aria-live="polite">
+    <span class="toast-icon" aria-hidden="true">✓</span>
+    <span class="toast-message" id="toastMessage">Added to cart!</span>
+  </div>
+
+  <footer role="contentinfo">
+    <p>© 2026 Earthly Blooms. Handcrafted Natural Soaps.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -555,41 +555,90 @@ h1 {
 .founder-content h2 {
   font-size: clamp(28px, 4vw, 40px);
   color: var(--brown);
+  margin-bottom: 20px;
+}
+
+.about-intro {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--soft-brown);
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+
+/* Founder Card */
+.founder-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(74, 51, 40, 0.1);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: start;
   margin-bottom: 24px;
 }
 
-.founder-story {
+.founder-card-image {
+  flex-shrink: 0;
+}
+
+.founder-card .founder-image {
+  width: 120px;
+  height: 120px;
+  box-shadow: 0 4px 16px rgba(74, 51, 40, 0.15);
+}
+
+.founder-card .founder-image::before {
+  inset: -6px;
+}
+
+.founder-card .founder-image-placeholder {
   font-size: 16px;
-  line-height: 1.8;
+}
+
+.founder-card-content {
+  padding: 0;
+}
+
+.founder-card-content h3 {
+  font-size: 20px;
+  color: var(--brown);
+  margin-bottom: 12px;
+}
+
+.founder-card-content p {
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--soft-brown);
   margin-bottom: 16px;
 }
 
 .founder-quote {
-  margin: 28px 0 24px;
-  padding: 20px 24px;
-  background: var(--white);
-  border-left: 4px solid var(--sage);
-  border-radius: 0 12px 12px 0;
+  margin: 0;
+  padding: 14px 18px;
+  background: var(--cream);
+  border-left: 3px solid var(--sage);
+  border-radius: 0 8px 8px 0;
   position: relative;
 }
 
 .founder-quote p {
-  font-size: 17px;
+  font-size: 14px;
   font-style: italic;
   color: var(--brown);
-  line-height: 1.6;
+  line-height: 1.5;
   margin: 0;
 }
 
 .founder-quote::before {
   content: '"';
   position: absolute;
-  top: 8px;
-  left: 12px;
-  font-size: 48px;
+  top: 2px;
+  left: 8px;
+  font-size: 32px;
   color: var(--sage);
-  opacity: 0.3;
+  opacity: 0.4;
   font-family: Georgia, serif;
   line-height: 1;
 }
@@ -977,21 +1026,45 @@ footer {
   }
 
   .founder-content h2 {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
-  .founder-story {
+  .about-intro {
     font-size: 15px;
-    margin-bottom: 14px;
+    margin-bottom: 24px;
+    max-width: none;
+  }
+
+  /* Founder card - stack on tablet */
+  .founder-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .founder-card-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .founder-card .founder-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .founder-card-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .founder-card-content p {
+    font-size: 14px;
+    margin-bottom: 12px;
   }
 
   .founder-quote {
-    margin: 24px 0 20px;
-    padding: 16px 20px;
-  }
-
-  .founder-quote p {
-    font-size: 15px;
+    text-align: left;
   }
 
   .cart-toast {

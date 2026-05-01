@@ -96,44 +96,56 @@
 
       <!-- Product cards wrapper -->
       <div class="carousel-track" id="carouselTrack">
-        <article class="product-card">
+        <article class="product-card" data-product="lavender-sage">
           <div class="product-image" style="background: linear-gradient(135deg, #9aaa8d 0%, #7a8a6d 100%);" role="img" aria-label="Lavender and Sage soap product image">
             <span class="placeholder-text">Lavender &amp; Sage</span>
           </div>
           <h3>Lavender &amp; Sage Soap</h3>
           <p>Calming lavender with grounding sage essential oils.</p>
-          <span class="price">$12.00</span>
-          <button class="btn add-to-cart-btn" data-product="Lavender &amp; Sage Soap" aria-label="Add Lavender and Sage Soap to cart">Add to Cart</button>
+          <span class="price">$15.00</span>
+          <div class="product-card-buttons">
+            <button class="btn add-to-cart-btn" data-product="Lavender &amp; Sage Soap" aria-label="Add Lavender and Sage Soap to cart">Add to Cart</button>
+            <button class="btn view-details-btn" data-product="lavender-sage" aria-label="View details for Lavender and Sage Soap">View Details</button>
+          </div>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" data-product="honey-oat">
           <div class="product-image" style="background: linear-gradient(135deg, #c98254 0%, #a66b3f 100%);" role="img" aria-label="Honey and Oat soap product image">
             <span class="placeholder-text">Honey &amp; Oat</span>
           </div>
           <h3>Honey &amp; Oat Bar</h3>
           <p>Raw honey and colloidal oatmeal for gentle cleansing.</p>
-          <span class="price">$12.00</span>
-          <button class="btn add-to-cart-btn" data-product="Honey &amp; Oat Bar" aria-label="Add Honey and Oat Bar to cart">Add to Cart</button>
+          <span class="price">$15.00</span>
+          <div class="product-card-buttons">
+            <button class="btn add-to-cart-btn" data-product="Honey &amp; Oat Bar" aria-label="Add Honey and Oat Bar to cart">Add to Cart</button>
+            <button class="btn view-details-btn" data-product="honey-oat" aria-label="View details for Honey and Oat Bar">View Details</button>
+          </div>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" data-product="eucalyptus-refresh">
           <div class="product-image" style="background: linear-gradient(135deg, #8b9a7d 0%, #6b7a5d 100%);" role="img" aria-label="Eucalyptus Refresh soap product image">
             <span class="placeholder-text">Eucalyptus</span>
           </div>
           <h3>Eucalyptus Refresh</h3>
           <p>Refreshing eucalyptus with a hint of peppermint.</p>
-          <span class="price">$12.00</span>
-          <button class="btn add-to-cart-btn" data-product="Eucalyptus Refresh" aria-label="Add Eucalyptus Refresh to cart">Add to Cart</button>
+          <span class="price">$15.00</span>
+          <div class="product-card-buttons">
+            <button class="btn add-to-cart-btn" data-product="Eucalyptus Refresh" aria-label="Add Eucalyptus Refresh to cart">Add to Cart</button>
+            <button class="btn view-details-btn" data-product="eucalyptus-refresh" aria-label="View details for Eucalyptus Refresh">View Details</button>
+          </div>
         </article>
 
-        <article class="product-card">
+        <article class="product-card" data-product="citrus-bliss">
           <div class="product-image" style="background: linear-gradient(135deg, #b8956e 0%, #9a7a54 100%);" role="img" aria-label="Citrus Bliss soap product image">
             <span class="placeholder-text">Citrus Blend</span>
           </div>
           <h3>Citrus Bliss Bar</h3>
           <p>Bright citrus blend with orange and lemon oils.</p>
-          <span class="price">$12.00</span>
-          <button class="btn add-to-cart-btn" data-product="Citrus Bliss Bar" aria-label="Add Citrus Bliss Bar to cart">Add to Cart</button>
+          <span class="price">$15.00</span>
+          <div class="product-card-buttons">
+            <button class="btn add-to-cart-btn" data-product="Citrus Bliss Bar" aria-label="Add Citrus Bliss Bar to cart">Add to Cart</button>
+            <button class="btn view-details-btn" data-product="citrus-bliss" aria-label="View details for Citrus Bliss Bar">View Details</button>
+          </div>
         </article>
       </div>
 
@@ -149,6 +161,8 @@
     <div class="carousel-indicators" id="carouselIndicators" role="tablist" aria-label="Carousel navigation">
       <button class="indicator active" data-index="0" role="tab" aria-label="Go to slide 1" aria-selected="true"></button>
       <button class="indicator" data-index="1" role="tab" aria-label="Go to slide 2" aria-selected="false"></button>
+      <button class="indicator" data-index="2" role="tab" aria-label="Go to slide 3" aria-selected="false"></button>
+      <button class="indicator" data-index="3" role="tab" aria-label="Go to slide 4" aria-selected="false"></button>
     </div>
 
     <!-- Demo notice -->
@@ -158,24 +172,78 @@
   </section>
 
   <!-- ============================================
-       ABOUT SECTION
-       Brand story with parallax background
+       PRODUCT DETAIL MODAL
+       Popup modal with product details
        ============================================ -->
-  <section id="about" class="about" data-parallax="0.3" aria-labelledby="about-heading">
-    <div class="about-content">
-      <p class="eyebrow">About Earthly Blooms</p>
-      <h2 id="about-heading">Handcrafted with Love</h2>
-      <p>
-        Born from a love of natural living, Earthly Blooms creates small-batch
-        handcrafted soaps using time-honored methods. Each bar is made with
-        care in our home studio, using simple, wholesome ingredients that
-        nourish your skin and delight your senses.
-      </p>
-      <p class="about-second">
-        We believe in the power of simple, natural ingredients—
-        no harsh chemicals, no artificial fragrances, just pure,
-        gentle soap made the way nature intended.
-      </p>
+  <div class="modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-container">
+      <button class="modal-close" id="modalClose" aria-label="Close modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <div class="modal-content">
+        <div class="modal-image" id="modalImage"></div>
+        <div class="modal-details">
+          <h2 id="modalTitle">Product Name</h2>
+          <p class="modal-description">Description goes here.</p>
+          <div class="modal-ingredients">
+            <h3>Ingredients</h3>
+            <p>Ingredients list goes here.</p>
+          </div>
+          <span class="modal-price">$15.00</span>
+          <div class="modal-buttons">
+            <button class="btn add-to-cart-btn" id="modalAddToCart">Add to Cart</button>
+            <a href="#" class="btn secondary order-inquiry-btn" id="modalOrderBtn">Order Inquiry</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       MEET THE FOUNDER SECTION
+       Founder story with two-column layout
+       ============================================ -->
+  <section id="about" class="founder-section" aria-labelledby="founder-heading">
+    <div class="founder-container">
+      <div class="founder-image-wrapper">
+        <!-- 
+          TODO: Replace founder image here
+          Place your image at: images/founder.jpg
+          Recommended size: 400x400px or larger
+        -->
+        <div class="founder-image" role="img" aria-label="Natasha - Founder of Earthly Blooms">
+          <span class="founder-image-placeholder">Natasha</span>
+        </div>
+      </div>
+      
+      <div class="founder-content">
+        <p class="eyebrow">Meet the Founder</p>
+        <h2 id="founder-heading">Handcrafted with Love</h2>
+        
+        <p class="founder-story">
+          Hi, my name is Natasha and I am a stay-at-home mom with a passion for clean living. 
+          I started making soap to provide my family with non-toxic products to use.
+        </p>
+        <p class="founder-story">
+          What began as a hobby quickly turned into a small business, allowing me to share 
+          better non-toxic options with others.
+        </p>
+        <p class="founder-story">
+          Earthly Blooms was born from my firsthand experience with the toxicity in the 
+          mainstream beauty industry. My goal is to create products made with rich, natural 
+          ingredients and to make a difference in other people's lives.
+        </p>
+        
+        <blockquote class="founder-quote">
+          <p>“It is precisely the possibility of realizing a dream that makes life interesting.”</p>
+        </blockquote>
+        
+        <a href="#shop" class="btn primary">View Soaps</a>
+      </div>
     </div>
   </section>
 

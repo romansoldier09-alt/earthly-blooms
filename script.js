@@ -116,6 +116,7 @@
     if (!prevBtn || !nextBtn) return;
     
     prevBtn.addEventListener('click', function() {
+      var maxIndex = totalSlides - getVisibleCards();
       if (currentIndex > 0) {
         currentIndex--;
         updateCarousel();
@@ -142,6 +143,120 @@
     window.addEventListener('resize', function() {
       currentIndex = Math.min(currentIndex, totalSlides - getVisibleCards());
       updateCarousel();
+    });
+  }
+
+  // ============================================
+  // PRODUCT DETAIL MODAL
+  // ============================================
+  var productData = {
+    'lavender-sage': {
+      name: 'Lavender & Sage Soap',
+      description: 'Calming lavender with grounding sage essential oils.',
+      ingredients: 'Olive oil, coconut oil, shea butter, lavender essential oil, sage essential oil, lye, distilled water.',
+      price: '$15.00',
+      gradient: 'linear-gradient(135deg, #9aaa8d 0%, #7a8a6d 100%)',
+      label: 'Lavender & Sage'
+    },
+    'honey-oat': {
+      name: 'Honey & Oat Bar',
+      description: 'Raw honey and colloidal oatmeal for gentle cleansing.',
+      ingredients: 'Olive oil, coconut oil, shea butter, raw honey, colloidal oats, lye, distilled water.',
+      price: '$15.00',
+      gradient: 'linear-gradient(135deg, #c98254 0%, #a66b3f 100%)',
+      label: 'Honey & Oat'
+    },
+    'eucalyptus-refresh': {
+      name: 'Eucalyptus Refresh',
+      description: 'Refreshing eucalyptus with a hint of peppermint.',
+      ingredients: 'Olive oil, coconut oil, shea butter, eucalyptus essential oil, peppermint essential oil, lye, distilled water.',
+      price: '$15.00',
+      gradient: 'linear-gradient(135deg, #8b9a7d 0%, #6b7a5d 100%)',
+      label: 'Eucalyptus'
+    },
+    'citrus-bliss': {
+      name: 'Citrus Bliss Bar',
+      description: 'Bright citrus blend with orange and lemon oils.',
+      ingredients: 'Olive oil, coconut oil, shea butter, orange essential oil, lemon essential oil, lye, distilled water.',
+      price: '$15.00',
+      gradient: 'linear-gradient(135deg, #b8956e 0%, #9a7a54 100%)',
+      label: 'Citrus Blend'
+    }
+  };
+
+  var modal = document.getElementById('productModal');
+  var modalClose = document.getElementById('modalClose');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalImage = document.getElementById('modalImage');
+  var modalDescription = document.querySelector('.modal-description');
+  var modalIngredients = document.querySelector('.modal-ingredients p');
+  var modalPrice = document.querySelector('.modal-price');
+  var modalAddToCart = document.getElementById('modalAddToCart');
+  var modalOrderBtn = document.getElementById('modalOrderBtn');
+  var currentProduct = '';
+
+  function openModal(productId) {
+    var data = productData[productId];
+    if (!data) return;
+    
+    currentProduct = productId;
+    modalTitle.textContent = data.name;
+    modalDescription.textContent = data.description;
+    modalIngredients.textContent = data.ingredients;
+    modalPrice.textContent = data.price;
+    modalImage.style.background = data.gradient;
+    modalImage.innerHTML = '<span class="placeholder-text">' + data.label + '</span>';
+    
+    modalAddToCart.setAttribute('data-product', data.name);
+    modalOrderBtn.href = 'mailto:hello@earthlyblooms.com?subject=Soap Order Inquiry&body=Hi, I would like to order: ' + encodeURIComponent(data.name);
+    
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    
+    // Focus trap for accessibility
+    setTimeout(function() {
+      modalClose.focus();
+    }, 100);
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function initModal() {
+    if (!modal) return;
+    
+    // Open modal on View Details button click
+    var viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+    for (var i = 0; i < viewDetailsBtns.length; i++) {
+      viewDetailsBtns[i].addEventListener('click', function() {
+        var productId = this.getAttribute('data-product');
+        openModal(productId);
+      });
+    }
+    
+    // Close modal on close button click
+    if (modalClose) {
+      modalClose.addEventListener('click', function() {
+        closeModal();
+      });
+    }
+    
+    // Close modal on overlay click
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
     });
   }
 
@@ -217,6 +332,7 @@
       initCart();
       initLeaves();
       initCarousel();
+      initModal();
       initParallax();
       initRipple();
       initSmoothScroll();
@@ -225,6 +341,7 @@
     initCart();
     initLeaves();
     initCarousel();
+    initModal();
     initParallax();
     initRipple();
     initSmoothScroll();

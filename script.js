@@ -144,6 +144,45 @@
       currentIndex = Math.min(currentIndex, totalSlides - getVisibleCards());
       updateCarousel();
     });
+
+    // ============================================
+    // TOUCH SWIPE SUPPORT
+    // ============================================
+    var carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
+      var touchStartX = 0;
+      var touchEndX = 0;
+      var minSwipeDistance = 50;
+
+      carouselContainer.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      carouselContainer.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+
+      function handleSwipe() {
+        var swipeDistance = touchEndX - touchStartX;
+        var maxIndex = totalSlides - getVisibleCards();
+        
+        // Swipe left = next product
+        if (swipeDistance < -minSwipeDistance) {
+          if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateCarousel();
+          }
+        }
+        // Swipe right = previous product
+        else if (swipeDistance > minSwipeDistance) {
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+          }
+        }
+      }
+    }
   }
 
   // ============================================
